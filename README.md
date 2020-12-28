@@ -1,9 +1,9 @@
 ## Getting Started
 
-### yarn / npm i
+### `yarn` / `npm i`
 To download all dependencies
 
-### yarn dev
+### `yarn dev`
 To start the app
 
 
