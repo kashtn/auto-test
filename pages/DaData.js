@@ -25,7 +25,6 @@ export default function DaData({ serverResult }) {
       check();
       const response = await fetch(`https://swapi.dev/api/people/${result}/`);
       const data = await response.json();
-      console.log(result);
       setFromServer(data);
     }
     if (!serverResult) {
@@ -43,27 +42,35 @@ export default function DaData({ serverResult }) {
   }
 
   async function onSearch(value) {
-    // dispatch(startGetting(value)); //запрос через thunk
-    dispatch(setSearchValue(value));
-    dispatch(setData(await getData(value)));
-    setFromServer(await getData(value));
+    if (value <= 83) {
+      // dispatch(startGetting(value)); //запрос через thunk
+      dispatch(setSearchValue(value));
+      dispatch(setData(await getData(value)));
+      setFromServer(await getData(value));
 
-    //если запрос удался , сохраняем его в базу
+      //если запрос удался , сохраняем его в базу
 
-    // if (response.status === 200) {
-    //   await fetch("/saveRequest", {
-    //     method: "POST",
-    //     mode: "no-cors",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(value),
-    //   });
-    // }
+      // if (response.status === 200) {
+      //   await fetch("/saveRequest", {
+      //     method: "POST",
+      //     mode: "no-cors",
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //     },
+      //     body: JSON.stringify(value),
+      //   });
+      // }
+    } else {
+      alert("Введите число меньше 84!");
+    }
   }
 
   if (!fromServer) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="container">
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   return (
@@ -77,7 +84,8 @@ export default function DaData({ serverResult }) {
             </Link>
           </div>
           <Search
-            placeholder="input search text1"
+            placeholder="Введите число"
+            maxLength="2"
             onSearch={onSearch}
             enterButton
             style={{ width: 200 }}

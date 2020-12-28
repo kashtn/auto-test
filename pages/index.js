@@ -8,9 +8,11 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Link href="/DaData">
-        <a>DaData</a>
-      </Link>
+      <div className="container">
+        <Link href="/DaData">
+          <a>DaData</a>
+        </Link>
+      </div>
     </div>
   );
 }
